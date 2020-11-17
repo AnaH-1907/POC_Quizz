@@ -51,15 +51,17 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
 
       <div className="flex-grow text-white mt-8 text-2xl leading-normal">{questionText}</div>
 
-      <div className="text-white mb-8">
-        <span
-          className="inline-block uppercase bg-blue-500
-              px-2 py-1 mb-4 text-xs tracking-wider rounded-sm w-auto"
-        >
-          Anecdote
-        </span>
-        <div className="opacity-50 text-sm">{anecdote}</div>
-      </div>
+      {stop && (
+        <div className="text-white mb-8">
+          <span
+            className="inline-block uppercase bg-blue-500
+                px-2 py-1 mb-4 text-xs tracking-wider rounded-sm w-auto"
+          >
+            Anecdote
+          </span>
+          <div className="opacity-50 text-sm">{anecdote}</div>
+        </div>
+      )}
       {answerOptions.map((option, i) => (
         <div
           key={i}
@@ -76,7 +78,9 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
           onClick={() => !stop && onSelect(i)}
         >
           <span className="flex-grow">{option.answerText}</span>
-          {option.isCorrect && <img alt="" className="w-5 h-5" src="https://www.materialui.co/materialIcons/action/check_circle_white_24x24.png" />}
+          {stop && option.isCorrect && (
+            <img alt="" className="w-5 h-5" src="https://www.materialui.co/materialIcons/action/check_circle_white_24x24.png" />
+          )}
         </div>
       ))}
 

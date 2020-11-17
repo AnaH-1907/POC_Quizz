@@ -5,7 +5,7 @@ export const QuizData = {
     {
       questionText: "Quel programmeur a créé et continue de diriger le développement du noyau de Linux ?",
       answerOptions: [
-        { answerText: "Steeve Jobs", isCorrect: false },
+        { answerText: "Steve Jobs", isCorrect: false },
         { answerText: "Bill Gates", isCorrect: false },
         { answerText: "Linus Torvalds", isCorrect: true },
         { answerText: "Larry Ellison", isCorrect: false },
