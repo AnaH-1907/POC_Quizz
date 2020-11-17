@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 
 export default function App() {
   const questions = [
@@ -109,9 +109,11 @@ export default function App() {
   const [showScore, setShowScore] = useState(false)
   const [score, setScore] = useState(0)
   const [anecdote, setAnecdote] = useState(false)
+  const [desactiveAnswerButton, setDesactiveAnswerButton] = useState(false)
 
   const handleAnswerButtonClick = isCorrect => {
     setAnecdote(true)
+    setDesactiveAnswerButton(true)
     if (isCorrect === true) {
       setScore(score + 1)
     }
@@ -119,12 +121,19 @@ export default function App() {
     const nextQuestion = currentQuestion + 1
     if (nextQuestion < questions.length) {
       setTimeout(() => {
+        setDesactiveAnswerButton(false)
         setCurrentQuestion(nextQuestion)
         setAnecdote(false)
       }, 5000)
     } else {
       setShowScore(true)
     }
+  }
+
+  const handleSwitchQuestion = () => {
+    const nextQuestion = currentQuestion + 1
+
+    setCurrentQuestion(nextQuestion)
   }
 
   return (
@@ -145,7 +154,9 @@ export default function App() {
           </div>
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map(answerOptions => (
-              <button onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>{answerOptions.answerText}</button>
+              <button onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)} disabled={desactiveAnswerButton}>
+                {answerOptions.answerText}
+              </button>
             ))}
           </div>
 
