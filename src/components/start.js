@@ -27,7 +27,7 @@ export const Start = ({ title, createdAt, total }) => {
         </div>
       </div>
       <div className="mb-8 mx-auto">
-        <button className="btn btn-primary" onClick={() => setStarted(true)}>
+        <button className="h-10 rounded-full px-4 bg-indigo-500 text-white font-medium uppercase text-xs tracking-wider" onClick={() => setStarted(true)}>
           Démarrer
         </button>
       </div>
