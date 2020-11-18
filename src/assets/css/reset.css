@@ -13,3 +13,7 @@
 img {
   border: none;
 }
+
+body {
+  font-family: "barlow", sans-serif;
+}

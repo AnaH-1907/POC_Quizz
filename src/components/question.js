@@ -61,7 +61,7 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
             Question {current + 1} / {total}
           </span>
           <span>{time}</span>
-          <img alt="" className="ml-2 w-4" src="https://www.materialui.co/materialIcons/image/timer_white_192x192.png" />
+          <span className="material-icons text-lg text-white opacity-25 ml-2">av_timer</span>
         </div>
 
         <div
@@ -71,7 +71,7 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
         />
       </div>
 
-      <div className="flex-grow text-white mt-8 text-2xl leading-normal">{questionText}</div>
+      <div className="flex-grow font-medium text-white mt-8 text-xl leading-normal">{questionText}</div>
 
       {stop && (
         <div className="text-white mb-8">
@@ -101,21 +101,22 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
             onClick={() => !stop && onSelect(i)}
           >
             <span className="flex-grow">{option.answerText}</span>
-            {stop && option.isCorrect && (
-              <img alt="" className="w-5 h-5" src="https://www.materialui.co/materialIcons/action/check_circle_white_24x24.png" />
-            )}
+            {stop && option.isCorrect && <span className="material-icons text-xl text-white">check_circle</span>}
           </div>
         ))}
 
       <div className="mx-auto mt-8">
-        {stop && (
+        {
           <button
-            className="h-10 rounded-full px-4 bg-indigo-500 text-white font-medium uppercase text-xs tracking-wider"
+            className={
+              "h-10 rounded-full px-6 text-white font-medium uppercase text-xs tracking-wider " + (!stop ? "bg-gray-700 opacity-25" : "bg-indigo-500")
+            }
             onClick={() => setCurrent(current + 1)}
+            disabled={!stop || null}
           >
             Suivant
           </button>
-        )}
+        }
       </div>
     </div>
   )

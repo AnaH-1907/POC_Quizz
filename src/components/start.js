@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { startedState } from "../atoms/started.atom"
 import * as moment from "moment"
+import "moment/locale/fr"
 import { useRecoilState } from "recoil"
 
 export const Start = ({ title, createdAt, total }) => {
@@ -12,7 +13,7 @@ export const Start = ({ title, createdAt, total }) => {
 
   return (
     <div className="flex flex-col justify-between h-screen">
-      <div className="flex h-64">
+      <div className="flex" style={{ height: "60vh" }}>
         <img
           alt=""
           className="w-full h-full object-cover"
@@ -27,7 +28,10 @@ export const Start = ({ title, createdAt, total }) => {
         </div>
       </div>
       <div className="mb-8 mx-auto">
-        <button className="h-10 rounded-full px-4 bg-indigo-500 text-white font-medium uppercase text-xs tracking-wider" onClick={() => setStarted(true)}>
+        <button
+          className="h-10 rounded-full px-6 bg-indigo-500 text-white font-medium uppercase text-xs tracking-wider"
+          onClick={() => setStarted(true)}
+        >
           Démarrer
         </button>
       </div>
