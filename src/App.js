@@ -13,12 +13,11 @@ export default function App() {
   const { title, createdAt, questions } = QuizData
   const total = questions.length
 
-  console.log(started)
   return (
     <div className="app">
       {!started ? (
         <Start title={title} createdAt={createdAt} total={total} />
-      ) : current <= questions.length ? (
+      ) : current < questions.length ? (
         <Questions {...QuizData} />
       ) : (
         <Ending total={total} />

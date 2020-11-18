@@ -4,7 +4,7 @@ import * as moment from "moment"
 import { useRecoilState } from "recoil"
 
 export const Start = ({ title, createdAt, total }) => {
-  const [, setStarted] = useRecoilState(startedState)
+  const [started, setStarted] = useRecoilState(startedState)
 
   useEffect(() => {
     moment.locale("fr")

@@ -14,13 +14,19 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
 
   const [score, setScore] = useRecoilState(scoreState)
   const [current, setCurrent] = useRecoilState(currentState)
-  console.log(score)
   const onSelect = index => {
     setSelected(index)
     setStop(true)
     if (answerOptions[index].isCorrect) {
-      setScore(score++)
+      setScore(score+1) 
     }
+  }
+
+  const switchQuestion = () => {
+    setSelected(-1)
+    setCurrent(current + 1)
+    setTime(timer)
+    setStop(false)
   }
 
   useEffect(() => {
@@ -35,14 +41,15 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
     else setStop(true)
   }, [time])
 
+
   return (
     <div className="p-8 h-screen flex flex-col justify-between">
       <div className="relative h-8 top bg-gray-800 rounded flex items-center overflow-hidden">
         <div className="z-10 absolute w-full flex items-center justify-between px-2 text-white text-sm">
           <span className="flex-grow">
-            Question {current} / {total}
+            Question {current + 1} / {total}
           </span>
-          <span>Temps restants : {time}</span>
+          <span>Temps restant : {time}</span>
           <img alt="" className="ml-2 w-4" src="https://www.materialui.co/materialIcons/image/timer_white_192x192.png" />
         </div>
 
@@ -62,7 +69,7 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
           <div className="opacity-50 text-sm">{anecdote}</div>
         </div>
       )}
-      {answerOptions.map((option, i) => (
+      {answerOptions && answerOptions.map((option, i) => (
         <div
           key={i}
           className={
@@ -86,7 +93,7 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
 
       <div className="mx-auto mt-8">
         {stop && (
-          <button className="btn btn-primary" onClick={() => setCurrent(current + 1)}>
+          <button className="btn btn-primary" onClick={() => switchQuestion() }>
             Suivant
           </button>
         )}
