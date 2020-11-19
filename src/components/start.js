@@ -2,10 +2,10 @@ import React, { useEffect } from "react"
 import { startedState } from "../atoms/started.atom"
 import * as moment from "moment"
 import "moment/locale/fr"
-import { useRecoilState } from "recoil"
+import { useSetRecoilState } from "recoil"
 
 export const Start = ({ title, createdAt, total }) => {
-  const [started, setStarted] = useRecoilState(startedState)
+  const setStarted = useSetRecoilState(startedState)
 
   useEffect(() => {
     moment.locale("fr")
@@ -17,7 +17,7 @@ export const Start = ({ title, createdAt, total }) => {
         <img
           alt=""
           className="w-full h-full object-cover"
-          src="https://ubuntu-mate.community/uploads/default/7df0dea9e072a5bb43c99142b3dc34f1ab1ad4cd"
+          src="https://c4.wallpaperflare.com/wallpaper/902/770/576/linux-tux-simple-minimalism-hd-wallpaper-preview.jpg"
         />
       </div>
       <div className="content p-8 text-white flex-grow">

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { currentState } from "../atoms/current.atom"
-import { QuizData } from "../data"
 import { scoreState } from "../atoms/score.atom"
 import { useRecoilState } from "recoil"
 
@@ -37,6 +36,7 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
         }, 1000)
       )
     else if (!stop) onSelect(-1)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time])
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export const Question = ({ questionText, answerOptions, anecdote, total }) => {
             onClick={() => setCurrent(current + 1)}
             disabled={!stop || null}
           >
-            Suivant
+            {current < total - 1 ? "Question suivante" : "Terminer"}
           </button>
         }
       </div>

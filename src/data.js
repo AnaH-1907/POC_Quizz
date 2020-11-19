@@ -48,7 +48,7 @@ export const QuizData = {
         { answerText: "Mandrika", isCorrect: false },
         { answerText: "Red Hat", isCorrect: true },
         { answerText: "Souze", isCorrect: false },
-        { answerText: "Zubuntu", isCorrect: true },
+        { answerText: "Mandalorian", isCorrect: false },
       ],
       anecdote: "Red Hat est l'une des entreprises dédiées aux logiciels Open Source les plus importantes et les plus reconnues.",
     },
